@@ -3,6 +3,7 @@ import 'package:WeCan/loginscreen.dart';
 import 'package:WeCan/our_leaders.dart';
 import 'package:WeCan/student.dart';
 import 'package:WeCan/syllabus.dart';
+import 'package:WeCan/volunteer_attendance.dart';
 import 'package:WeCan/volunteers.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -38,7 +39,7 @@ class _HomescreenState extends State<Homescreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.white,
         ),
         title: Text(
@@ -94,14 +95,14 @@ class _HomescreenState extends State<Homescreen> {
                   end: Alignment.bottomRight,
                 ),
               ),
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
                     radius: 50,
                     backgroundImage: AssetImage('assets/images/logo.jpg'),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
                   Text(
                     "Laugh Live Learn Lead",
                     style: TextStyle(
@@ -118,21 +119,21 @@ class _HomescreenState extends State<Homescreen> {
                 padding: EdgeInsets.zero,
                 children: [
                   ListTile(
-                    leading: Icon(Icons.image_outlined, color: Colors.green),
-                    title: Text(
+                    leading: const Icon(Icons.image_outlined, color: Colors.green),
+                    title: const Text(
                       'Add Images',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CarouselPage()),
+                        MaterialPageRoute(builder: (context) => const CarouselPage()),
                       );
                     },
                   ),
                   ListTile(
-                    leading: Icon(Icons.login, color: Colors.green),
-                    title: Text(
+                    leading: const Icon(Icons.login, color: Colors.green),
+                    title: const Text(
                       'Login',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
@@ -140,6 +141,19 @@ class _HomescreenState extends State<Homescreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => LoginScreen()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.login, color: Colors.green),
+                    title: const Text(
+                      'Attendance',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>  VolunteerAttendanceScreen()),
                       );
                     },
                   ),
@@ -179,7 +193,7 @@ class HomeScreenContent extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
           StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance.collection('carouselImages').snapshots(),
             builder: (context, snapshot) {
@@ -199,12 +213,12 @@ class HomeScreenContent extends StatelessWidget {
               );
             },
           ),
-          SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: TodayCard(day: today),
           ),
-          SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: OurLeadersCard(onTap: () {
@@ -313,7 +327,7 @@ class OurLeadersCard extends StatelessWidget {
             BoxShadow(
               color: Colors.black.withOpacity(0.2),
               blurRadius: 8,
-              offset: Offset(0, 4),
+              offset: const Offset(0, 4),
             ),
           ],
         ),
@@ -326,7 +340,7 @@ class OurLeadersCard extends StatelessWidget {
                 color: Colors.white.withOpacity(0.2),
                 shape: BoxShape.circle,
               ),
-              child: Icon(Icons.group, size: 40, color: Colors.white),
+              child: const Icon(Icons.group, size: 40, color: Colors.white),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -342,14 +356,14 @@ class OurLeadersCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(
+                  const Text(
                     "Meet the passionate leaders of our club",
                     style: TextStyle(fontSize: 14, color: Colors.white70),
                   ),
                 ],
               ),
             ),
-            Icon(Icons.arrow_forward_ios, color: Colors.white70, size: 20),
+            const Icon(Icons.arrow_forward_ios, color: Colors.white70, size: 20),
           ],
         ),
       ),
@@ -496,7 +510,7 @@ class TodayCard extends StatelessWidget {
         elevation: 4,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           height: 150,
           decoration: BoxDecoration(
             color: Colors.red.shade50,
@@ -510,10 +524,10 @@ class TodayCard extends StatelessWidget {
                   color: Colors.red.shade100,
                   shape: BoxShape.circle,
                 ),
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 child: Icon(Icons.beach_access, color: Colors.red.shade600, size: 24),
               ),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -527,7 +541,7 @@ class TodayCard extends StatelessWidget {
                         color: Colors.red.shade800,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       "Today is a holiday! 🎉\nNo volunteers are assigned today.",
                       style: TextStyle(fontSize: 14, color: Colors.grey.shade700, height: 1.4),

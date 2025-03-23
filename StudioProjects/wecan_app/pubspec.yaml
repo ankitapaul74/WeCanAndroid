@@ -53,6 +53,9 @@ dependencies:
   change_app_package_name: ^1.4.0
   animate_do:
   url_launcher:
+  table_calendar:
+  animated_button:
+  glassmorphism_ui:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -79,6 +82,7 @@ flutter:
   assets:
     - assets/images/img.png
     - assets/images/logo.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
